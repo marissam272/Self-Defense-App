@@ -55,8 +55,12 @@ $("#findClass").on("click", function(event) {
 
     var map;
 function loadMapScenario() {
-    map = new Microsoft.Maps.Map(document.getElementById('myMap'), {});
+    map = new Microsoft.Maps.Map(("#myMap"), {});
 }
+
+loadMapScenario();
+
+});
 
     // function GetMap()
     // {
@@ -68,8 +72,5 @@ function loadMapScenario() {
 
     //     //Add your post map load code here.
     // }
-
-});    
-
 
 });
