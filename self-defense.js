@@ -12,10 +12,9 @@ firebase.initializeApp(config);
 // Create a variable to reference the database.
 var database = firebase.database();
 
-var trainName = "";
-var destination = "";
-var firstTrain = "";
-var frequency = 0;
+// var firstName = "";
+// var lastName = "";
+// var email = "";
 
 $(document).ready(function() {
 
@@ -24,45 +23,53 @@ $(document).ready(function() {
         event.preventDefault();
     
         // Grabbed values from text boxes
-        trainName = $("#trainName-input").val();
-        destination = $("#destination-input").val();
-        frequency = $("#frequency-input").val();
-        firstTrain = $("#firstTrain-input").val();
+        var $firstName = $("#firstName-input").val();
+        var $lastName = $("#lastName-input").val();
+        var $email = $("#email-input").val();
+        
     
         // Code for handling the push
         // database.ref().push({
-            var train = {
-            trainName: trainName,
-            destination: destination,
-            frequency: frequency,
-            firstTrain: firstTrain
+            var form = {
+            firstName: $firstName,
+            lastName: $lastName,
+            email: $email
     };
             // dateAdded: firebase.database.ServerValue.TIMESTAMP
         // });
     
-        database.ref().push(train);
-    
-    // });
-    
-    
-        database.ref().on("child_added", function(childSnapshot) {
-    
-            // Log everything that's coming out of snapshot
-            console.log(childSnapshot.val().trainName);
-            console.log(childSnapshot.val().destination);
-            console.log(childSnapshot.val().frequency);
-            console.log(childSnapshot.val().firstTrain);
+        database.ref().push(form);
 
-            // Create Firebase event for adding a train to the database and a row in the html when a user adds an entry
-var fireBaseTrain = database.ref().on("child_added", function(childSnapshot, prevChildKey) {
+        //clear all of the checkboxes
+    $("#firstName-input").val("");
+    $("#lastName-input").val("");
+    $("#email-input").val("");
 
-    console.log(childSnapshot.val());
-    
-    // Store everything into a variable.
-    var trainName = childSnapshot.val().trainName;
-    var destination = childSnapshot.val().destination;
-    var firstTrain = childSnapshot.val().firstTrain;
-    var frequency = childSnapshot.val().frequency;
+});
 
-)};
-)};
+$("#findClass").on("click", function(event) {
+    // event.preventDefault() prevents submit button from trying to send a form.
+    // Using a submit button instead of a regular button allows the user to hit
+    // "Enter" instead of clicking the button if desired
+    event.preventDefault();
+
+    var map;
+function loadMapScenario() {
+    map = new Microsoft.Maps.Map(document.getElementById('myMap'), {});
+}
+
+    // function GetMap()
+    // {
+    //     var map = new Microsoft.Maps.Map('#myMap');
+    //     (credentials: "AtWGzSZzYAbAlhjEmb08RxN24XFyXSfue2jfGSvj1WUbFmzZW79PmyDUc7hEmkj9",
+    //     center: new Microsoft.Maps.Location(45.5, -122.5),
+    //     mapTypeId: Microsoft.Maps.MapTypeId.road,
+    //     zoom: 7));
+
+    //     //Add your post map load code here.
+    // }
+
+});    
+
+
+});
