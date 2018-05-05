@@ -37,7 +37,7 @@
                     <h1>Taekwondo</h1>
                         <p>A blend of Karate and Chinese Martial Arts, Taekwondo originated in Korea. It focuses on speed and agility and helps strengthen your core. It also helps with flexibility as the techniques require you to torque your lower body when kicking. Apart from the obvious benefits, you'll also sculpt a rock hard body and we guarantee you that most rapists and the like will not want to mess with you once they get a glimpse of those biceps.</p>
                         <iframe width="560" height="315" src="https://www.youtube.com/embed/etgxusKS0Do" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-                        <button type="submit" id="submit" class="btn btn-default">Find Classes Near You!</button>
+                        <button type="submit" id="taekwondoBtn" class="btn btn-default">Find Classes Near You!</button>
                 </div>
                 <div class="col-sm-3"></div>
             </div>
@@ -166,7 +166,7 @@
             <script src="https://code.jquery.com/jquery.js"></script><!-- JavaScript -->
             <!--<script src="self-defense.js"></script> -->
             <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
-
+            <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
 <script>
 
 /*---------------------------------------------------- */
@@ -266,6 +266,34 @@ function getOutput(item) {
 /*---------------------------------------------------- */
 //            END FireBase For Sign Up Form            //
 /*---------------------------------------------------- */
+
+/*---------------------------------------------------- */
+//            Bing API                                 //
+/*---------------------------------------------------- */
+
+   var urlFormat = 'http://dev.virtualearth.net/REST/v1/Locations?query="';
+   var apiKey = 'AkIgxfXpNvZhot50cFWwIqPh-FFZluPze7WW1iVKhScPaDPqTd04fjlrTOaKQuXu';
+
+   $('#taekwondoBtn').on('click', function (event) {
+       event.preventDefault();
+       console.log("hi");
+
+       //var searchTerm = searchField.val();
+       var queryURL = urlFormat + 'taekwondoevanston' + '&jsonp=GeocodeCallback&key=' + apiKey;
+
+       $.ajax({
+           url: queryURL,
+           method: "GET",
+           accepts: 'json',
+           
+       }).then(function (response) {
+            console.log(response);
+
+
+       }).fail(function(err) { console.log(err) });
+   });
+
+
 
 
 </script>
