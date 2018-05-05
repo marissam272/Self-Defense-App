@@ -62,15 +62,35 @@ loadMapScenario();
 
 });
 
-    // function GetMap()
-    // {
-    //     var map = new Microsoft.Maps.Map('#myMap');
-    //     (credentials: "AtWGzSZzYAbAlhjEmb08RxN24XFyXSfue2jfGSvj1WUbFmzZW79PmyDUc7hEmkj9",
-    //     center: new Microsoft.Maps.Location(45.5, -122.5),
-    //     mapTypeId: Microsoft.Maps.MapTypeId.road,
-    //     zoom: 7));
-
-    //     //Add your post map load code here.
-    // }
-
 });
+
+// var urlFormat = 'http://dev.virtualearth.net/REST/v1/Locations?query="';
+// var apiKey = 'AtWGzSZzYAbAlhjEmb08RxN24XFyXSfue2jfGSvj1WUbFmzZW79PmyDUc7hEmkj9';
+
+// $('#findClass').on('click', function (event) {
+
+//     // var urlFormat = 'http://dev.virtualearth.net/REST/v1/Locations?query="';
+//     // var apiKey = 'AtWGzSZzYAbAlhjEmb08RxN24XFyXSfue2jfGSvj1WUbFmzZW79PmyDUc7hEmkj9';
+//     event.preventDefault();
+//     console.log("hi");
+
+//     //var searchTerm = searchField.val();
+//     var queryURL = "http://dev.virtualearth.net/REST/v1/Locations?query=taekwondoevanston&jsonp=GeocodeCallback&key=AtWGzSZzYAbAlhjEmb08RxN24XFyXSfue2jfGSvj1WUbFmzZW79PmyDUc7hEmkj9";
+
+//     $.ajax({
+//         url: queryURL,
+//         method: "GET"
+//     }).then(function (response) {
+//         var results = response.resourceSets;
+//         console.log(results);
+
+//     var map;
+// function loadMapScenario() {
+//     map = new Microsoft.Maps.Map(("#myMap"), {});
+// }
+
+// loadMapScenario();
+
+// });
+
+// });
