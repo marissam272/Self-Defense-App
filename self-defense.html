@@ -136,22 +136,136 @@
                     <label for="email">Email</label>
                     <input type="email" class="form-control" id="email-input" name="email">
                 </div>
-                <button type="submit" id="submit" class="btn btn-default">Submit</button>
+                <button type="submit" id="submit-form-btn" class="btn btn-default">Submit</button>
             </form>
         </div>
-        <div class="col-sm-3"></div>
+        <div class="col-sm-3">
+                <div id="search">
+                        <div class="form-group row">
+                            <label for="search-input">Search</label>
+                            <input class="form-control" id="search-input" type="text">
+                        </div>
+                        <button id="submitBtn"> Submit</button>
+                </div>
+                <div id="results"></div>
+        </div>
         </div>
         </div>
     </div>
-          </div>
+
+
+</div>
+    
+</body>
+   
+</html>
 
           <!-- <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script> -->
 
  <!-- jQuery -->
             <script src="https://code.jquery.com/jquery.js"></script><!-- JavaScript -->
-            <script src="self-defense.js"></script>
+            <!--<script src="self-defense.js"></script> -->
+            <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
+
+<script>
+
+/*---------------------------------------------------- */
+//                   Youtube API                       //
+/*---------------------------------------------------- */
+
+$("#submitBtn").on("click", function(event) {
+    event.preventDefault();
+
+var q = $("#search-input").val().trim();
+
+    $.get ( //Jquery command to get data from youtube api
+            "https://www.googleapis.com/youtube/v3/search", { 
+                part: "snippet",
+                q: q,
+                type: 'video',
+                key: "AIzaSyC41e6Q78DQ8yxl9vno_OK8tRpE0Fh992Y"},
+                function(data) {
+
+                    console.log(data);
+                    console.log(data.items);
+                $.each(data.items, function(i, item) {
+                    var output = getOutput(item);
+                    $("#results").append(output);
+                }
+    );
+});
+
+function getOutput(item) {
+    var videoId = item.id.videoID;
+    var title = item.snippet.title;
+    var description = item.snippet.description;
+    var thumb = item.snippet.thumbnails.high.url;
+    var channelTitle = item.snippet.channelTitle;
+    var videoDate = item.snippet.publishedAt;
+
+    var output = '<li>' + 
+        '<div class="list-left">' + 
+        '<a href="https://www.youtube.com/embed/'+videoId+'"><img src="'+thumb+'"></a>' +
+        '</div>' +
+        '<div class="list-right">' +
+        '<h3><a href="https://www.youtube.com/embed/'+videoId+'">' +title+'</a></h3>' +
+        '<small>By <span class="cTitle">'+channelTitle+'</span> on '+videoDate+'</small' +
+        '<p>'+description+'</p>' +
+        '</div>' +
+        '<li>' +
+        '<div class="clearfix"></div>' +
+        '';
+
+        return output;
+};
+});
+
+/*---------------------------------------------------- */
+//                  END Youtube API                    //
+/*---------------------------------------------------- */
 
 
-   </body>
-   
-   </html>
+
+/*---------------------------------------------------- */
+//            FireBase For Sign Up Form                //
+/*---------------------------------------------------- */
+
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDEbvDMPLX7OhIvUX_aVoRD3r0NYg2y8_A",
+    authDomain: "project1-eb9b4.firebaseapp.com",
+    databaseURL: "https://project1-eb9b4.firebaseio.com",
+    projectId: "project1-eb9b4",
+    storageBucket: "project1-eb9b4.appspot.com",
+    messagingSenderId: "331878755433"
+  };
+  firebase.initializeApp(config);
+
+  var database = firebase.database();
+  
+  $("#submit-form-btn").on("click", function(event) {
+      event.preventDefault();
+
+      var firstName = $("#firstName-input").val().trim();
+      var lastName = $("#lastName-input").val().trim();
+      var email = $("#email-input").val().trim();
+
+      var newPerson = {
+          fullName: firstName + lastName,
+          firstName: firstName,
+          lastName: lastName,
+          email: email
+      }
+
+      database.ref().push(newPerson);
+
+      $("#firstName-input").val("");
+      $("#lastName-input").val(""); 
+      $("#email-input").val(""); 
+    })
+/*---------------------------------------------------- */
+//            END FireBase For Sign Up Form            //
+/*---------------------------------------------------- */
+
+
+</script>
