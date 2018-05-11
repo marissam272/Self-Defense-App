@@ -10,9 +10,24 @@
 
 h1, h2, h3 {
     font-family: 'Comfortaa', cursive;
-    font-weight:800;
+    /* font-weight:800; */
 }
 
 h1 {
     text-shadow: 4px 4px #ef5350;
+    font-weight:800;
+}
+
+body {
+    background-color: #ffebee;
+}
+
+form {
+    background-color: white;
+    border: 2px solid lightgray;
+}
+
+.container1 {
+    margin: 25px;
+    padding: 25px;
 }
