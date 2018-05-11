@@ -19,6 +19,7 @@ $("button").on("click", function() {
         //Krav Maga / Muay Thai Video Button Set to Channel ID. 
         if (channelName === "UCZjBWltdlGD6SLn3OJqjzqw" //Krav Maga Channel ID
         || channelName === "UCT4rADCrNoOL22-jOWQjSRQ" // Muay Thai Channel ID
+        || channelName === "UCUgIqptHreGZj-QYv4GYamw"
         )
         {
             getVideo(channelName);
