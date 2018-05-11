@@ -1,18 +1,37 @@
-$("button").on("click", function(event) {
+$("button").on("click", function() {
+    var onOff = $(this).attr("data-state");
     var channelName = $(this).attr("data-name");
     var APIKEY = "AIzaSyC41e6Q78DQ8yxl9vno_OK8tRpE0Fh992Y";
     var queryUrl = "https://www.googleapis.com/youtube/v3/channels?key=" + APIKEY + "&forUsername=" + channelName + "&part=id";
     console.log("Channel: ", channelName);
     console.log("URL: ", queryUrl);
     
-    //Krav Maga / Muay Thai Video Button Set to Channel ID. 
-    if (channelName === "UCZjBWltdlGD6SLn3OJqjzqw" //Krav Maga Channel ID
+    if (onOff == "on")
+    {
+        $(".vidContent").empty();
+        $(this).attr("data-state", "off");
+    }
+    else
+    {       
+        $(".vidContent").empty();
+        $(this).attr("data-state", "on");
+
+        //Krav Maga / Muay Thai Video Button Set to Channel ID. 
+        if (channelName === "UCZjBWltdlGD6SLn3OJqjzqw" //Krav Maga Channel ID
         || channelName === "UCT4rADCrNoOL22-jOWQjSRQ" // Muay Thai Channel ID
         )
-    {
-        getVideo(channelName);
+        {
+            getVideo(channelName);
+        }
+        else 
+        {
+            ajaxCall(queryUrl);
+        }
     }
+});
 
+function ajaxCall(queryUrl)
+{
     $.ajax({
         url: queryUrl,
         method: "GET"
@@ -24,7 +43,8 @@ $("button").on("click", function(event) {
         console.log("channel id: ", channelId);
         getVideo(channelId);
         });
-});
+};
+
 function getVideo(channelId)
 {
     // Test for Taekwondo
@@ -181,6 +201,5 @@ function getVideo(channelId)
         return output;
         }
     }
-
-    
 }
+
