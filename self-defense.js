@@ -15,16 +15,25 @@ var lastName = "";
 var email = "";
 $(document).ready(function () {
 
+
+    $("#formregister").on("click",function(event){
+        $("#signupform").toggle('slow');
+    });
+
+    $("#cancel").on("click", function (event) {
+        $("#signupform").toggle('slow');
+    });
+
     // Capture Button Click
     $("#formsubmit").on("click", function (event) {
         event.preventDefault();
 
         // Grabbed values from text boxes
-        firstName = $("#firstName-input").val();
-        lastName = $("#lastName-input").val();
-        email = $("#email-input").val();
+        firstName = $("#first_name").val();
+        lastName = $("#last_name").val();
+        email = $("#email").val();
 
-        if ($.trim($("#firstName-input").val()) === "" || $.trim($("#lastName-input").val()) === "" || $.trim($("#email-input").val()) === "") {
+        if ($.trim($("#first_name").val()) === "" || $.trim($("#last_name").val()) === "" || $.trim($("#email").val()) === "") {
             alert('You did not fill out one or more of the fields');
             return false;
         }
@@ -35,11 +44,12 @@ $(document).ready(function () {
         };
         database.ref().push(form);
 
-        $("#firstName-input").val('');
-        $("#lastName-input").val('');
-        $("#email-input").val('');
+        $("#first_name").val('');
+        $("#last_name").val('');
+        $("#email").val('');
 
     });
+
 });
 
 //for maps
