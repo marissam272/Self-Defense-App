@@ -19,6 +19,7 @@ $("button").on("click", function() {
         //Krav Maga / Muay Thai Video Button Set to Channel ID. 
         if (channelName === "UCZjBWltdlGD6SLn3OJqjzqw" //Krav Maga Channel ID
         || channelName === "UCT4rADCrNoOL22-jOWQjSRQ" // Muay Thai Channel ID
+        || channelName === "UCUgIqptHreGZj-QYv4GYamw"
         )
         {
             getVideo(channelName);
@@ -74,7 +75,7 @@ function getVideo(channelId)
         }
     }
     //JUDO VIDEOS
-    else if (channelId === "UCeYa3QaP2n7I8SpGSqD-kUQ")
+    else if (channelId === "UCUgIqptHreGZj-QYv4GYamw")
     {
         $.get ( //Jquery command to get data from youtube api
             "https://www.googleapis.com/youtube/v3/playlists", { 
@@ -151,6 +152,7 @@ function getVideo(channelId)
         return output;
         }
     }
+    //Muay Thai
     else if (channelId === "UCT4rADCrNoOL22-jOWQjSRQ")
     {
         $.get ( //Jquery command to get data from youtube api
@@ -176,6 +178,7 @@ function getVideo(channelId)
         return output;
         }
     }
+    //BJJ
     else if (channelId === "UCXpu025o8edxR9b4NMbH11A")
     {
         $.get ( //Jquery command to get data from youtube api
