@@ -35,4 +35,8 @@ form {
 
 .container {
     margin-bottom: 75px;
-}<br><br><br>
+}
+
+#signupform {
+    display: none;
+}
