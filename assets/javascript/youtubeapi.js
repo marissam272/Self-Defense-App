@@ -75,7 +75,7 @@ function getVideo(channelId)
         }
     }
     //JUDO VIDEOS
-    else if (channelId === "UCeYa3QaP2n7I8SpGSqD-kUQ")
+    else if (channelId === "UCUgIqptHreGZj-QYv4GYamw")
     {
         $.get ( //Jquery command to get data from youtube api
             "https://www.googleapis.com/youtube/v3/playlists", { 
@@ -152,6 +152,7 @@ function getVideo(channelId)
         return output;
         }
     }
+    //Muay Thai
     else if (channelId === "UCT4rADCrNoOL22-jOWQjSRQ")
     {
         $.get ( //Jquery command to get data from youtube api
@@ -177,6 +178,7 @@ function getVideo(channelId)
         return output;
         }
     }
+    //BJJ
     else if (channelId === "UCXpu025o8edxR9b4NMbH11A")
     {
         $.get ( //Jquery command to get data from youtube api
