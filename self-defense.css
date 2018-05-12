@@ -18,6 +18,10 @@ h1 {
     font-weight:800;
 }
 
+h3 {
+    text-align: center;
+}
+
 body {
     background-image: url("nasty_fabric.png");
 }
@@ -39,4 +43,23 @@ form {
 
 #signupform {
     display: none;
+}
+
+/* .dust {
+    background-image: url("dust_scratches.png");
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.concrete {
+    background-image: url("concrete-texture.png");
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+} */
+
+.banner-background {
+    background-image: url("dust_scratches.png");
+    padding: 25px;
 }
